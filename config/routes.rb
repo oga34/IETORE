@@ -15,19 +15,19 @@ Rails.application.routes.draw do
   root to: 'homes#top'
  end
   
-　get 'users/my_page' => 'public/users#show', as: 'my_page'
-  get 'users/information/edit' => 'public/users#edit', as: 'information_edit'
-  patch  'users/information' => 'public/users#update', as: 'information_update'
-  get 'users/unsubcribe' => 'public/users#unsubcribe'
-  patch 'users/withdraw' => 'public/users#withdraw'
+ get 'users/my_page' => 'public/users#show', as: 'my_page'
+ get 'users/information/edit' => 'public/users#edit', as: 'information_edit'
+ patch  'users/information' => 'public/users#update', as: 'information_update'
+ get 'users/unsubcribe' => 'public/users#unsubcribe'
+ patch 'users/withdraw' => 'public/users#withdraw'
     
  scope module: :public do
-   get 'posts/draft' => 'posts/draft'
+   get 'posts/draft' => 'posts#draft'
    resources :posts
  end
    
  scope module: :public do
-   resources :posts_comments
+   resources :post_comments
  end
    
  scope module: :public do
