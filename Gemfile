@@ -63,6 +63,5 @@ gem "enum_help"
 gem 'kaminari','~> 1.2.1'
 
 gem 'net-smtp'
-# ついでに以下の2つも追加しておく方が良さそう
 gem 'net-imap'
 gem 'net-pop'
