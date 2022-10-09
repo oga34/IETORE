@@ -4,19 +4,25 @@ class Public::PostsController < ApplicationController
     
     def new
         @post = Post.new
+        @genres = Genre.all
     end
     
     def create
-    @post = Post.new(post_params)
-        if @post.save
+      @post = Post.new(post_params)
+      @genres = Genre.all
+      if @post.save
         redirect_to posts_path
-        else
+      else
         render :new
-        end
+      end
+    end
+    
+    def show
+      @post = Post.find(params[:id])
     end
   
     def index
-    @posts = curennt_user.posts
+    @posts = current_user.posts.all
     end
 
   def edit
@@ -34,6 +40,6 @@ class Public::PostsController < ApplicationController
   
  private
   def post_params
-    params.require(:post).permit(:genre_id)
+    params.require(:post).permit(:genre_id, :user_id, :body)
   end
 end
