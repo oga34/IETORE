@@ -22,17 +22,19 @@ Rails.application.routes.draw do
  patch 'users/withdraw' => 'public/users#withdraw'
     
  scope module: :public do
-   get 'posts/draft' => 'posts#draft'
+   get 'posts/draft' => 'posts#draft', as: 'draft'
    resources :posts
  end
-   
+ 
  scope module: :public do
-   resources :post_comments
+   resource :favorites, only: [:create,:destroy]
  end
    
  scope module: :public do
-   resources :favorites, only: [:create,:destroy]
+   resources :post_comments, only: [:create, :destroy]
  end
+   
+ 
 
 # ユーザー用
 # URL /users/sign_in ...

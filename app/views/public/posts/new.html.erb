@@ -16,12 +16,16 @@
         <%= form_with model: @post, url: posts_path, method: :post do |f| %>
           <%= f.file_field :video %> <br>
           <div class="input-group mb-3 mt-4">
-            <div class="input-group-prepend">
-              <span class="input-group-text" aria-hidden="true"><i class="fas fa-building"></i></span>
-            </div>
             <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, include_blank: '--トレーニングジャンルを選択--' %>
           </div>
-         
+          <div class="input-group mb-3 mt-4">
+            <%= f.label :conut, "回数" %>
+            <%= f.number_field :count %>回
+          </div>
+          <div class="input-group mb-3 mt-4">
+            <%= f.label :time, "時間（分）" %>
+            <%= f.number_field :time %>回
+          </div>
           <%= f.text_area :body, class:"form-control", rows:"3", placeholder:"コメントここに" %>
           <hr>
           <%= f.hidden_field :user_id, value: current_user.id %>
