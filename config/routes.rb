@@ -27,11 +27,11 @@ Rails.application.routes.draw do
  end
  
  scope module: :public do
-   resource :favorites, only: [:create,:destroy]
+   resources :favorites, only: [:create,:destroy]
  end
    
  scope module: :public do
-   resources :post_comments, only: [:create, :destroy]
+    resources :post_comments, only: [:create, :destroy]
  end
    
  

@@ -23,7 +23,7 @@ class Public::PostsController < ApplicationController
     end
   
     def index
-    @posts = current_user.posts.all
+    @posts = Post.all.order(created_at: :desc)
     end
 
   def edit
