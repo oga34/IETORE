@@ -1,0 +1,42 @@
+<div class="page_title mb-4 pl-3 pr-3">
+    <%= @user.first_name + @user.last_name %>さんの会員詳細
+</div>
+
+<div class="container ml-5">
+        <div class="row m-3">
+            <div class="font-weight-bold">会員ID　　　　　　</div>
+            <%= @user.id %>
+        </div>
+        <div class="row m-3">
+            <div class="font-weight-bold">氏名　　　　　　　</div>
+            <%= @user.first_name + @user.last_name %>
+        </div>
+        <div class="row m-3">
+            <div class="font-weight-bold">フリガナ　　　　　</div>
+                <%= @user.first_name_kana + @user.last_name_kana %>
+        </div>
+        <div class="row m-3">
+            <div class="font-weight-bold">ニックネーム　　　　　</div>
+                <%= @user.nickname %>
+        </div>
+        <div class="row m-3">
+            <div class="font-weight-bold">メールアドレス　　</div>
+                <%= @user.email %>
+        </div>
+        <div class="row m-3">
+            <div class="font-weight-bold">会員ステータス　　</div>
+                <% if @user.is_deleted == false %>
+                <div class="validity">
+                    <td>有効</td>
+                </div>
+                <% else %>
+                <div class="withdraw">
+                    <td >退会</td>
+                </div>
+    　　          <% end %>
+        </div>
+</div>
+
+<div style="text-align: left"  class="customer_show_btn">
+                <%= link_to '編集する', edit_admin_user_path(@user.id),  class: "btn btn-success mr-5" %>
+</div>
