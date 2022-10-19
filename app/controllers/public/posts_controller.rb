@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, only: [:edit, :update, :destroy]
     layout 'public/layouts/application'
     
     def new
@@ -37,6 +37,12 @@ class Public::PostsController < ApplicationController
     else
       render :edit
     end
+  end
+  
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy 
+    redirect_to root_path
   end
   
  private

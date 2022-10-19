@@ -1,42 +1,86 @@
-<div class="page_title mb-4 pl-3 pr-3">
-    <%= @user.first_name + @user.last_name %>さんの会員詳細
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="page_title mb-4 pl-3 pr-3">
+                <%= @user.first_name + @user.last_name %>さんの会員詳細
+            </div>
 
-<div class="container ml-5">
-        <div class="row m-3">
-            <div class="font-weight-bold">会員ID　　　　　　</div>
-            <%= @user.id %>
-        </div>
-        <div class="row m-3">
-            <div class="font-weight-bold">氏名　　　　　　　</div>
-            <%= @user.first_name + @user.last_name %>
-        </div>
-        <div class="row m-3">
-            <div class="font-weight-bold">フリガナ　　　　　</div>
-                <%= @user.first_name_kana + @user.last_name_kana %>
-        </div>
-        <div class="row m-3">
-            <div class="font-weight-bold">ニックネーム　　　　　</div>
-                <%= @user.nickname %>
-        </div>
-        <div class="row m-3">
-            <div class="font-weight-bold">メールアドレス　　</div>
-                <%= @user.email %>
-        </div>
-        <div class="row m-3">
-            <div class="font-weight-bold">会員ステータス　　</div>
-                <% if @user.is_deleted == false %>
-                <div class="validity">
-                    <td>有効</td>
+            <div class="container ml-5">
+                <div class="row m-3">
+                    <div class="font-weight-bold">会員ID　　　　　　</div>
+                    <%= @user.id %>
                 </div>
-                <% else %>
-                <div class="withdraw">
-                    <td >退会</td>
+                <div class="row m-3">
+                    <div class="font-weight-bold">氏名　　　　　　　</div>
+                    <%= @user.first_name + @user.last_name %>
                 </div>
-    　　          <% end %>
-        </div>
-</div>
+                <div class="row m-3">
+                    <div class="font-weight-bold">フリガナ　　　　　</div>
+                    <%= @user.first_name_kana + @user.last_name_kana %>
+                </div>
+                <div class="row m-3">
+                    <div class="font-weight-bold">ニックネーム　　　　　</div>
+                    <%= @user.nickname %>
+                </div>
+                <div class="row m-3">
+                    <div class="font-weight-bold">メールアドレス　　</div>
+                    <%= @user.email %>
+                </div>
+                <div class="row m-3">
+                    <div class="font-weight-bold">会員ステータス　　</div>
+                    <% if @user.is_deleted == false %>
+                        <div class="validity">
+                            <td>有効</td>
+                        </div>
+                    <% else %>
+                        <div class="withdraw">
+                            <td >退会</td>
+                        </div>
+    　　              <% end %>
+                </div>
 
-<div style="text-align: left"  class="customer_show_btn">
-                <%= link_to '編集する', edit_admin_user_path(@user.id),  class: "btn btn-success mr-5" %>
+                <div style="text-align: left"  class="customer_show_btn">
+                    <%= link_to '編集する', edit_admin_user_path(@user.id),  class: "btn btn-success mr-5" %>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-sm-8">
+            <div class="card-list-container">
+                <% @posts.each do |post| %>
+                    <%= link_to admin_post_path(post.id) do %>
+              <div class="card w-50 mx-auto mt-4 shadow-lg">
+                <div class="card-body">
+                    <p>ユーザーネーム：<%= post.user.nickname %></p>
+                    <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+                    <p class="card-text">トレーニングジャンル：<%= post.genre.name %></p>
+                    <% if post.count.present? %>
+                        <p class="card-text">回数：<%= post.count %>回</p>
+                    <% end %>
+                    <% if post.time.present? %>
+                        <p class="card-text">時間：<%= post.time %>分</p>
+                    <% end %>
+                    <p class="card-text"><%= raw Rinku.auto_link(simple_format(post.body), :urls, 'target="_blank" rel="noopener noreferrer"') %></p>
+
+                    <% if post.user == current_user %>
+                        <%= link_to "削除", post_path(post), method: :delete %>
+                    <% end %>
+                    <div>
+                      <p>コメント件数：<%= post.post_comments.count %></p>
+                          <% post.post_comments.each do |post_comment| %>
+                            <%= post_comment.user.nickname %>
+                            <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+                            <% if post_comment.user == current_user %>
+                              <%= link_to "削除", post_comment_path(post_comment.post, post_comment), method: :delete %>
+                            <% end %> 
+                          <% end %>
+                    </div>
+                </div>
+              </div>
+                    <% end %>
+                <% end %>
+                <%= paginate @posts %>
+            </div>
+        </div>
+    </div>
 </div>

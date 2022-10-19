@@ -6,6 +6,10 @@ Rails.application.routes.draw do
  namespace :admin do
   resources :users, only: [:index,:show,:edit,:update]
  end
+ 
+ namespace :admin do
+  resources :posts, only: [:index,:show,:edit,:update,:destroy]
+ end
   
  namespace :admin do
   resources :genres, only: [:index,:create,:edit,:update]
@@ -23,15 +27,13 @@ Rails.application.routes.draw do
     
  scope module: :public do
    get 'posts/draft' => 'posts#draft', as: 'draft'
-   resources :posts
+   resources :posts do
+    resources :post_comments, only: [:create, :destroy]
+   end
  end
  
  scope module: :public do
    resources :favorites, only: [:create,:destroy]
- end
-   
- scope module: :public do
-    resources :post_comments, only: [:create, :destroy]
  end
    
  

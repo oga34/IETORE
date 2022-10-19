@@ -1,7 +1,7 @@
 投稿一覧画面
 <div class="card-list-container">
     <% @posts.each do |post| %>
-     <%= link_to post_path(post.id) do %>
+     <%= link_to admin_post_path(post.id) do %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <div class="card-body">
         <p>ユーザーネーム：<%= post.user.nickname %></p>
