@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-    before_action :authenticate_user!, only: [:edit, :update, :destroy]
+    before_action :authenticate_user, only: [:edit, :update, :destroy]
     layout 'public/layouts/application'
     
     def new

@@ -14,4 +14,5 @@ class User < ApplicationRecord
   validates :last_name, length: { minimum: 1, maximum: 30}
   validates :first_name_kana, length: { minimum: 1, maximum: 30}
   validates :last_name_kana, length: { minimum: 1, maximum: 30}
+  
 end

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
     
  scope module: :public do
    get 'posts/draft' => 'posts#draft', as: 'draft'
+   get 'homes/index' => 'homes#index'
    resources :posts do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
@@ -40,7 +41,11 @@ Rails.application.routes.draw do
 devise_for :users,skip: [:passwords], controllers: {
  registrations: "public/registrations",
  sessions: 'public/sessions'
+ 
 }
+
+##ゲストログイン用
+post 'homes/guest_sign_in', to: 'public/homes#new_guest'
 
 # 管理者用
 # URL /admin/sign_in ...

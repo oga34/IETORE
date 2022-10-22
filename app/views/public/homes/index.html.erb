@@ -1,0 +1,50 @@
+<div class="card-list-container">
+    <% @posts.each do |post| %>
+     <%= link_to post_path(post.id) do %>
+    <div class="card w-50 mx-auto mt-4 shadow-lg">
+        <div class="card-body">
+            <p>ユーザーネーム：<%= post.user.nickname %></p>
+            <p>投稿日：<%= post.created_at.strftime('%Y/%m/%d') %></p>
+            <p class="card-text">トレーニングジャンル：<%= post.genre.name %></p>
+            <% if post.count.present? %>
+                <p class="card-text">回数：<%= post.count %>回</p>
+            <% end %>
+            <% if post.time.present? %>
+                <p class="card-text">時間：<%= post.time %>分</p>
+            <% end %>
+            <p class="card-text"><%= raw Rinku.auto_link(simple_format(post.body), :urls, 'target="_blank" rel="noopener noreferrer"') %></p>
+
+            <% if post.user == current_user %>
+              <%= link_to "削除", post_path(post.id), method: :delete %>
+            <% end %>
+    
+    <!-- いいね機能 -->
+   <% if post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_favorites_path(post), method: :delete do %>
+        ♥<%= post.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorites_path(post), method: :post do %>
+        ♡<%= post.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
+  
+            <div>
+                <p>コメント件数：<%= post.post_comments.count %></p>
+                <% post.post_comments.each do |post_comment| %>
+                <%= post_comment.user.nickname %>
+                <%= post_comment.created_at.strftime('%Y/%m/%d') %><%= post_comment.comment %>
+                <% if post_comment.user == current_user %>
+                    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                <% end %> 
+                <% end %>
+            </div>
+        </div>
+    </div>
+        <% end %>
+    <% end %>
+</div>
