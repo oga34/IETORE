@@ -19,6 +19,20 @@
               <%= link_to "削除", post_path(post.id), method: :delete %>
             <% end %>
     
+    <!-- いいね機能 -->
+   <% if post.favorited_by?(current_user) %>
+    <p>
+      <%= link_to post_favorites_path(post), method: :delete do %>
+        ♥<%= post.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to post_favorites_path(post), method: :post do %>
+        ♡<%= post.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
   
             <div>
                 <p>コメント件数：<%= post.post_comments.count %></p>
