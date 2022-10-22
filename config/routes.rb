@@ -28,12 +28,9 @@ Rails.application.routes.draw do
  scope module: :public do
    get 'posts/draft' => 'posts#draft', as: 'draft'
    resources :posts do
+    resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
    end
- end
- 
- scope module: :public do
-   resources :favorites, only: [:create,:destroy]
  end
    
  
