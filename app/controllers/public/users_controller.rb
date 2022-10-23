@@ -34,12 +34,10 @@ class Public::UsersController < ApplicationController
   
   ##いいね一覧表示
   def favorites
-      favorites = current_user.favorites
-      favorites.each do |favorite|
-          @post = favorite.post
-      end
+      @user =current_user
+      favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+      @posts = Post.find(favorites)
       @post_comment = PostComment.new
-      @favorites = @post.favorites
   end
     
     private
