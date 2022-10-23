@@ -67,3 +67,5 @@ gem 'net-imap'
 gem 'net-pop'
 
 gem "rinku"
+
+gem 'image_processing'

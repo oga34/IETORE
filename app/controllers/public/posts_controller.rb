@@ -20,6 +20,8 @@ class Public::PostsController < ApplicationController
     def show
       @post = Post.find(params[:id])
       @post_comment = PostComment.new
+      ##投稿に紐づく全てのいいねの情報
+      @favorites = @post.favorites
     end
   
     def index
