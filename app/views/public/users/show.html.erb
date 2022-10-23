@@ -27,10 +27,11 @@
     </table>
     
 </div>
+    <%= link_to "いいね一覧を見る", users_favorites_path %>
         </div>
         
-        <div class="col-sm-8">
-            <div class="card-list-container">
+<div class="col-sm-8">
+    <div class="card-list-container">
     <% @posts.each do |post| %>
      <%= link_to post_path(post.id) do %>
   <div class="card w-50 mx-auto mt-4 shadow-lg">

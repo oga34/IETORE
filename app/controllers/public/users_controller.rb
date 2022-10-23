@@ -31,6 +31,16 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
+  
+  ##いいね一覧表示
+  def favorites
+      favorites = current_user.favorites
+      favorites.each do |favorite|
+          @post = favorite.post
+      end
+      @post_comment = PostComment.new
+      @favorites = @post.favorites
+  end
     
     private
     def user_params

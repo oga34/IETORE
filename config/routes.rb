@@ -24,6 +24,7 @@ Rails.application.routes.draw do
  patch  'users/information' => 'public/users#update', as: 'information_update'
  get 'users/unsubcribe' => 'public/users#unsubcribe'
  patch 'users/withdraw' => 'public/users#withdraw'
+ get 'users/favorites' => 'public/users#favorites'
     
  scope module: :public do
    get 'posts/draft' => 'posts#draft', as: 'draft'

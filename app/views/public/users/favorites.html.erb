@@ -2,7 +2,7 @@
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <div class="card-body">
         <p>ユーザーネーム：<%= @post.user.nickname %></p>
-        <p>投稿ユーザー画像：<%= image_tag @post.user.profile_image(100,100) %></p>
+        <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image(100,100) %></p>
         <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
         <p class="card-text">トレーニングジャンル：<%= @post.genre.name %></p>
         <% if @post.count.present? %>
@@ -64,4 +64,3 @@
 </div>
 
 <div>
-  
