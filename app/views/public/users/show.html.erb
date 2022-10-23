@@ -6,6 +6,7 @@
             <div class="ml-5 mt-2">
     <h5 class="font-weight-bold mb-3">登録情報　<%= link_to "　編集する　", information_edit_path, class: "btn btn-success" %></h5>
     
+    <div class="mb-3"><%= image_tag @user.get_profile_image(100,100) %></div>
     <table border="1">
         <tr>
             <td bgcolor="silver" class="pt-2 pb-2 pl-2">氏名</td>
