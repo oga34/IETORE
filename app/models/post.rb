@@ -8,7 +8,7 @@ class Post < ApplicationRecord
     validates :genre_id, presence: true
     validates :body, length: { maximum: 400}
     
-    enum posted_status: { published: 0, draft: 1}
+    enum status: { published: 0, draft: 1}
     
     def favorited_by?(user)
         favorites.exists?(user_id: user.id)

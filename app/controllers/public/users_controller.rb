@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
     
     def show
         @user = current_user
-        @posts = current_user.posts
+        @posts = current_user.posts.published.reverse_order
     end
     
     def edit

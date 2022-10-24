@@ -1,5 +1,5 @@
 class Public::PostsController < ApplicationController
-    before_action :authenticate_user, only: [:edit, :update, :destroy]
+    before_action :authenticate_user!, only: [:edit, :update, :destroy]
     layout 'public/layouts/application'
     
     def new
@@ -11,9 +11,9 @@ class Public::PostsController < ApplicationController
       @post = Post.new(post_params)
       @genres = Genre.all
       if @post.save
-        redirect_to posts_path
+        redirect_to my_page_path, notice: "記録を作成しました！"
       else
-        render :new
+        render :new, alert: "記録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end
     end
     
@@ -23,32 +23,33 @@ class Public::PostsController < ApplicationController
       ##投稿に紐づく全てのいいねの情報
       @favorites = @post.favorites
     end
-  
-    def index
-    @posts = Post.all.order(created_at: :desc)
+    
+    def draft
+      @posts = current_user.posts.draft.reverse_order
     end
 
   def edit
     @post = Post.find(params[:id])
+    @genres = Genre.all
   end
   
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to posts_path
+      redirect_to my_page_path, notice: "記録を更新しました！"
     else
-      render :edit
+      render :edit, alert: "記録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
     end
   end
   
   def destroy
     post = Post.find(params[:id])
     post.destroy 
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
   
  private
   def post_params
-    params.require(:post).permit(:genre_id, :user_id, :body, :count, :time)
+    params.require(:post).permit(:genre_id, :user_id, :body, :count, :time, :status)
   end
 end

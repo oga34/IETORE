@@ -2,8 +2,8 @@
   <div class="card w-50 mx-auto mt-4 shadow-lg">
     <div class="card-body">
         <p>ユーザーネーム：<%= @post.user.nickname %></p>
-        <p>投稿ユーザー画像：<%= image_tag @post.user.profile_image(100,100) %></p>
-        <p>投稿日：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
+        <p>投稿ユーザー画像：<%= image_tag @post.user.get_profile_image(100,100) %></p>
+        <p>投稿日時：<%= @post.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
         <p class="card-text">トレーニングジャンル：<%= @post.genre.name %></p>
         <% if @post.count.present? %>
           <p class="card-text">回数：<%= @post.count %>回</p>
@@ -14,6 +14,7 @@
         <p class="card-text"><%= raw Rinku.auto_link(simple_format(@post.body), :urls, 'target="_blank" rel="noopener noreferrer"') %></p>
 
   <% if @post.user == current_user %>
+  <%= link_to "編集する", edit_post_path(@post) %>
     <%= link_to "削除", post_path(@post.id), method: :delete %>
   <% end %>
   

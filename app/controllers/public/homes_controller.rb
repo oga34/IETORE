@@ -7,7 +7,7 @@ class Public::HomesController < ApplicationController
     
     ##全てのユーザーの投稿一覧
     def index
-        @posts = Post.all.order(created_at: :desc)
+        @posts = Post.published.reverse_order
     end
     
     def new_guest
