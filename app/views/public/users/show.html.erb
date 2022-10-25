@@ -4,7 +4,12 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="ml-5 mt-2">
-                <h5 class="font-weight-bold mb-3">登録情報　<%= link_to "　編集する　", information_edit_path, class: "btn btn-success" %></h5>
+                <h5 class="font-weight-bold mb-3">
+                    登録情報　
+                    <% if @user == current_user %>
+                        <%= link_to "　編集する　", information_edit_path, class: "btn btn-success" %>
+                    <% end %>
+                </h5>
                 <div class="mb-3"><%= image_tag @user.get_profile_image(100,100) %></div>
                 <table border="1">
                 <tr>
@@ -37,7 +42,11 @@
                         <div class="card-body">
                             <p>ユーザーネーム：<%= post.user.nickname %></p>
                             <p>投稿日：<%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-                            <p class="card-text">トレーニングジャンル：<%= post.genre.name %></p>
+                            <p class="card-text">
+                              <% unless post.genre.name == "その他" %>
+                                <%= post.genre.name %>
+                              <% end %>
+                            </p>
                             <% if post.count.present? %>
                                 <p class="card-text">回数：<%= post.count %>回</p>
                             <% end %>

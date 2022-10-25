@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   root to: 'homes#top'
  end
   
- get 'users/my_page' => 'public/users#show', as: 'my_page'
+ get 'users/my_page/:id' => 'public/users#show', as: 'my_page'
  get 'users/information/edit' => 'public/users#edit', as: 'information_edit'
  patch  'users/information' => 'public/users#update', as: 'information_update'
  get 'users/unsubcribe' => 'public/users#unsubcribe'

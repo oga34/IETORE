@@ -33,7 +33,7 @@
             <%= f.select :status, Post.statuses.keys.map { |k| [t("enums.post.status.#{k}"),k]}, {}, {class: "custom-select w-25"} %>
           </div>
           <%= f.hidden_field :user_id, value: current_user.id %>
-          <%= f.submit '投稿する', class: "btn btn-success" %>
+          <%= f.submit '作成する', class: "btn btn-success" %>
         <% end %>
       </div>
     </div>

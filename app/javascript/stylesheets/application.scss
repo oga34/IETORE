@@ -1,2 +1,24 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.user_image {
+    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    width: 50px;       /* ※縦横を同値に */
+    height: 50px;       /* ※縦横を同値に */
+}
+
+.user_image_small {
+    border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    width: 25px;       /* ※縦横を同値に */
+    height: 25px;       /* ※縦横を同値に */
+}
+
+.card_style {
+     border-radius: 30px;   
+}

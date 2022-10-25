@@ -1,10 +1,10 @@
 class Public::UsersController < ApplicationController
-    before_action :authenticate_user!
+    before_action :authenticate_user!, except: [:show]
     layout 'public/layouts/application'
     
     def show
-        @user = current_user
-        @posts = current_user.posts.published.reverse_order
+        @user = User.find(params[:id])
+        @posts = @user.posts.published.reverse_order
     end
     
     def edit
@@ -14,9 +14,9 @@ class Public::UsersController < ApplicationController
     def update
         @user = current_user
         if @user.update(user_params)
-            redirect_to my_page_path
+            redirect_to my_page_path, notice: "編集内容を保存しました！"
         else
-            render :edit
+            render :edit, alert: "編集内容を保存できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
         end
     end
   

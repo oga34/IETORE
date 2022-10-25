@@ -6,7 +6,11 @@
             <p>ユーザーネーム：<%= post.user.nickname %></p>
             <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
             <p>投稿日：<%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-            <p class="card-text">トレーニングジャンル：<%= post.genre.name %></p>
+            <p class="card-text">
+          <% unless post.genre.name == "その他" %>
+            <%= post.genre.name %>
+          <% end %>
+        </p>
             <% if post.count.present? %>
                 <p class="card-text">回数：<%= post.count %>回</p>
             <% end %>
