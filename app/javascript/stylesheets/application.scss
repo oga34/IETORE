@@ -7,14 +7,36 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: #FFCC99;
+}
+
+header {
+    background-color: #FFFFFF;
+    color: #FF9900;
+}
+
+footer {
+    background-color: #DDDDDD;
+}
+
+.top-text {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    font-family: "メイリオ";
+    line-height: 70px;
+}
+
 .user_image {
     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    border: 1px solid #C0C0C0;
     width: 50px;       /* ※縦横を同値に */
     height: 50px;       /* ※縦横を同値に */
 }
 
 .user_image_small {
     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
+    border: 1px solid #C0C0C0;
     width: 25px;       /* ※縦横を同値に */
     height: 25px;       /* ※縦横を同値に */
 }

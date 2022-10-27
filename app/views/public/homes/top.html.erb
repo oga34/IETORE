@@ -1,9 +1,13 @@
-<div>こんにちはトップページです</div>
-
-
-<%= link_to "新規会員登録", new_user_registration_path, class: 'nav-link text-dark' %>
-
-<%= link_to "ログイン画面へ", new_user_session_path, class: 'nav-link text-dark' %>
-
-<%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post %>で利用する
-
+<div class="top-container">
+    <div class="d-flex justify-content-center mt-5">
+        <h3 class="top-text">
+            お家トレーニングの記録をつけよう！</br>
+            　　記録をつけて脱3日坊主！！
+        </h3>
+    </div>
+    <div class="d-flex justify-content-center text-center">
+        <p><%= link_to "新規会員登録", new_user_registration_path, class: 'btn btn-success mr-5 mb-3' %>
+        <%= link_to "ログイン画面へ", new_user_session_path, class: 'btn btn-primary mb-3' %></br>
+        <%= link_to 'ゲストログイン', homes_guest_sign_in_path, method: :post %>で利用する</p>
+    </div>
+</div>
