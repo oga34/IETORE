@@ -34,7 +34,7 @@ footer {
   padding: 8% 0 0;
   margin: auto;
 }
-.form {
+.login-form {
   position: relative;
   z-index: 1;
   background: #FFFFFF;
@@ -44,7 +44,8 @@ footer {
   text-align: center;
   box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-.form input {
+
+.login-form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
   width: 100%;
@@ -59,9 +60,36 @@ footer {
     background: #f2f2f2;
 }
 
-.login-button {
+.login-btn {
     background: #28a745;
     color: white;
+}
+
+/* 新規登録画面*/
+.reg-page {
+  width: 1000px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.reg-form {
+  position: relative;
+  z-index: 1;
+  background: #E6FFE9;
+  margin: 0 auto 100px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+.reg-comment {
+    color: red;
+}
+
+.container {
+    font-family: "Roboto", sans-serif;
+}
+.reg-btn {
+    margin-left: 50px;
 }
 
 .user_image {
