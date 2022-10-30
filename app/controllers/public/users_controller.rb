@@ -14,7 +14,7 @@ class Public::UsersController < ApplicationController
     def update
         @user = current_user
         if @user.update(user_params)
-            redirect_to my_page_path, notice: "編集内容を保存しました！"
+            redirect_to my_page_path(current_user), notice: "編集内容を保存しました！"
         else
             render :edit, alert: "編集内容を保存できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
         end

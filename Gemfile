@@ -69,3 +69,5 @@ gem 'net-pop'
 gem "rinku"
 
 gem 'image_processing'
+
+gem 'rails-i18n'

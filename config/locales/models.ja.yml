@@ -6,3 +6,8 @@ ja:
         password: パスワード
         password_confirmation: 確認用パスワード
         remember_me: 次回から自動的にログイン
+        first_name: 名前(姓)
+        last_name: 名前(名)
+        first_name_kana: フリガナ(セイ)
+        last_name_kana: フリガナ(メイ)
+        nickname: ニックネーム

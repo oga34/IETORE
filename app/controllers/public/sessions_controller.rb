@@ -4,7 +4,7 @@ class Public::SessionsController < Devise::SessionsController
   layout 'public/layouts/application'
 
   def after_sign_in_path_for(resource)
-     root_path
+     my_page_path(current_user)
   end
 
   def after_sign_out_path_for(resource)

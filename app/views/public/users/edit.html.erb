@@ -1,7 +1,8 @@
-<div class="page_title mb-4 pl-3 pr-3">
-    会員情報編集
-</div>
-<div class="error-message">
+<div class="container reg-page">
+    <div class="reg-form">
+      <div class="h3">会員情報編集</div>
+       <%= form_with model: @user, url: information_update_path, method: :patch, local: true do |f| %>
+          <div class="error-message">
     <% if @user.errors.any? %>
         <%= @user.errors.count %>件のエラーメッセージが発生しました
           <ul>
@@ -11,41 +12,42 @@
           </ul>
     <% end %>
 </div>
-
-<div class="form-group ml-5">
-<%= form_with model: @user, url: information_update_path, method: :patch, local: true do |f| %>
-      <div class="form-group">
-        <%= f.label :first_name, "氏名　　　　　　　" %>
-        <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-        <%= f.text_field :last_name, autocomplete: "last_name" %>
-      </div>
-  
-      <div class="form-group">
-        <%= f.label :first_name_kana, "フリガナ　　　　　" %>
-        <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
-        <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
-      </div>
-  
-      <div class="form-group">
-        <%= f.label :nickname, "ニックネーム　      " %>
-        <%= f.text_field :nickname, autocomplete: "nickname" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :email, "メールアドレス　　" %>
-        <%= f.email_field :email, autocomplete: "email" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label :profile_image, "プロフィール画像" %>
-        <%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %>  
-      </div>
-
-      <div>
-        <%= f.submit "　　編集内容を保存　　", class: "btn btn-success mr-5 ml-5" %>
-        <%= link_to "　退会する　", users_unsubcribe_path, class: "btn btn-danger ml-5" %>
-      </div>
-
-    
-    <% end %>
-</div>
+          <div class="form-group form-inline input-group-sm">
+            <span class="col-md-3 text-md-right">プロフィール画像</span>
+            <span class="col-md-3"><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></span>
+          </div>
+          <div class="form-group form-inline input-group-sm">
+            <span class="col-md-3 text-md-right">名前(漢字)</span>
+            <span class="col-md-3"><%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control", placeholder: "(例)山田"  %></span>
+            <span class="col-md-3"><%= f.text_field :last_name, autocomplete: "last_name", class: "form-control", placeholder: "(例)太郎" %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+            <span class="col-md-3 text-md-right">名前(フリガナ)</span>
+            <span class="col-md-3"><%= f.text_field :first_name_kana, autocomplete: "first_name", class: "form-control", placeholder: "(例)ヤマダ"  %></span>
+            <span class="col-md-3"><%= f.text_field :last_name_kana, autocomplete: "last_name", class: "form-control", placeholder: "(例)タロウ" %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+		        <span class="col-md-3 text-md-right">ニックネーム</span>
+            <span class="col-md-3"><%= f.text_field :nickname, autocomplete: "nickname", class: "form-control", placeholder: "(例)ケンタウロス" %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+		        <span class="col-md-3 text-md-right">メールアドレス</span>
+            <span class="col-md-3"><%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "(例)xxx@ezwe.ne.jp" %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+		        <span class="col-md-3 text-md-right">
+		          パスワード
+		          <% if @minimum_password_length %>
+                (<%= @minimum_password_length %> 文字以上)
+              <% end %>
+            </span>
+            <span class="col-md-3"><%= f.password_field :password, autocomplete: "new-password", class: "form-control" %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+		        <span class="col-md-3 text-md-right">パスワード(確認用)</span>
+            <span class="col-md-3"><%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %></span>
+            <%= f.submit "変更内容を保存", class: "btn btn-success mr-3 ml-3"  %>
+		      </div>
+        <% end %>
+    </div>
+  </div>
