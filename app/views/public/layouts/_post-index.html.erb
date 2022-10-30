@@ -1,0 +1,80 @@
+<div class="card-list-container mb-3">
+                <div class="container">
+                <% posts.each do |post| %>
+                  <div class="card mx-auto mt-4 shadow-lg card_style">
+                    <div class="card-body m-1">
+                        <div class="row">
+                            <%= image_tag post.user.get_profile_image(100,100), class: "user_image" %>
+                            <%= link_to my_page_path(post.user) do %>
+                                <div class="mt-3 ml-3"><%= post.user.nickname %></div>
+                            <% end %>
+                            <p class="mt-3 ml-auto mr-3"><%= post.updated_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+                        </div>
+                        <%= link_to post_path(post.id) do %>
+                        <div class="row m-1">
+                            <p>
+                                <% unless post.genre.name == "その他" %>
+                                    <%= post.genre.name %>
+                                <% end %>
+                                <% if post.count.present? %>
+                                    <%= post.count %>回
+                                <% end %>
+                                <% if post.time.present? %>
+                                    <%= post.time %>分
+                                <% end %>
+                            </p>
+                            <% if post.user == current_user %>
+                                <div class="ml-auto mb-2">
+                                    <%= link_to "編集する", edit_post_path(post), class: "btn btn-success btn-sm" %>
+                                    <%= link_to "削除", post_path(post.id), method: :delete, class: "btn btn-danger btn-sm" %>
+                                </div>
+                            <% end %>
+                        </div>
+                        <% if post.body.present? %>
+                        <div class="row post-body">
+                            <div><%= raw Rinku.auto_link(simple_format(post.body), :urls, 'target="_blank" rel="noopener noreferrer"') %></div>
+                        </div>
+                        <% end %>
+                        <% end %>
+      
+                        <div class="border-top pt-2">
+                            <div class="row">
+                                <div class="ml-4">コメント<%= post.post_comments.count %>件</div>
+                                <!-- いいね機能 -->
+                                <div class="ml-auto mr-5">
+                                    <% if post.favorited_by?(current_user) %>
+                                    <div>
+                                        <%= link_to post_favorites_path(post), method: :delete do %>
+                                            ♥<%= post.favorites.count %> 
+                                        <% end %>
+                                    </div>
+                                    <% else %>
+                                    <div>
+                                        <%= link_to post_favorites_path(post), method: :post do %>
+                                             ♡<%= post.favorites.count %> 
+                                        <% end %>
+                                    </div>
+                                    <% end %>
+                                </div>
+                            </div>
+
+                            <!--　コメント機能 -->
+                                <% post.post_comments.each do |post_comment| %>
+                                    <div>
+                                    <%= link_to my_page_path(post_comment.user.id) do %>
+                                      <%= image_tag post_comment.user.get_profile_image(100,100), class: "user_image_small" %>
+                                      <%= post_comment.user.nickname %>
+                                    <% end %>
+                                    <%= post_comment.comment %>
+                                    <% if post_comment.user == current_user %>
+                                        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+                                    <% end %>  
+                                    </div>
+                                <% end %>
+                
+                        </div>
+                    </div>
+                  </div>
+                <% end %>
+                <div>
+            </div>

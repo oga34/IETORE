@@ -96,6 +96,10 @@ footer {
     margin-left: 50px;
 }
 
+/* マイページ */
+.post-body {
+    margin-left: 5px;
+}
 .user_image {
     border-radius: 50%;  /* 角丸半径を50%にする(=円形にする) */
     border: 1px solid #C0C0C0;
@@ -112,4 +116,12 @@ footer {
 
 .card_style {
      border-radius: 30px;   
+}
+
+.card {
+    width: 100%;
+}
+
+.card-body {
+    width: 100%;
 }
