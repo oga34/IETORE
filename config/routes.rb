@@ -24,6 +24,8 @@ Rails.application.routes.draw do
  patch 'users/withdraw' => 'public/users#withdraw'
  get 'users/favorites' => 'public/users#favorites'
     
+ get 'posts/favorited_user/:id' => 'public/posts#favorited_user', as: 'favorited_user'
+ 
  scope module: :public do
    get 'posts/draft' => 'posts#draft', as: 'draft'
    get 'homes/index' => 'homes#index'

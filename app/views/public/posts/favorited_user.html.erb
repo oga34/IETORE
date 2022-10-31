@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+            <div class="col-sm-6 bg-white mt-3">
+                <h5 class="font-weight-bold m-4">いいねしたユーザー</h5>
+                <% @favorites.each do |favorite| %>
+                    <%= link_to my_page_path(favorite.user.id) do %>
+                        <div class="row pt-3 pl-3 d-flex align-items-center border-top">
+                            <p><%= image_tag favorite.user.get_profile_image(100,100) %></p>
+                            <p class="pl-3 font-weight-bold"><%= favorite.user.nickname %></p>
+                        </div>
+                    <% end %>
+                <% end %>
+            </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+

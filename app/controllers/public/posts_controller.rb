@@ -27,6 +27,12 @@ class Public::PostsController < ApplicationController
       end
     end
     
+    ##いいねしたユーザー一覧表示
+    def favorited_user
+      post = Post.find(params[:id])
+      @favorites = post.favorites
+    end
+    
     def show
       @post = Post.find(params[:id])
       @post_comment = PostComment.new
@@ -46,7 +52,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to my_page_path, notice: "記録を更新しました！"
+      redirect_to my_page_path(current_user), notice: "記録を更新しました！"
     else
       render :edit, alert: "記録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
     end

@@ -39,7 +39,7 @@ class Public::UsersController < ApplicationController
       @posts = Post.find(favorites)
       @post_comment = PostComment.new
   end
-    
+  
     private
     def user_params
       params.require(:user).permit( :first_name, :last_name, :first_name_kana, :last_name_kana, :email, :nickname, :profile_image)
