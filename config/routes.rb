@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
  root to: 'public/homes#top'
-  
- get "search" => "posts#search"
  
  namespace :admin do
   resources :users, only: [:index,:show,:edit,:update]
@@ -35,8 +33,6 @@ Rails.application.routes.draw do
    end
  end
    
- 
-
 # ユーザー用
 # URL /users/sign_in ...
 devise_for :users,skip: [:passwords], controllers: {

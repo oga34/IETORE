@@ -3,7 +3,17 @@
     <div class="row">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <h5 class="font-weight-bold mt-4 ml-4">みんなの投稿</h5>
+            <div class="row">
+                <h5 class="font-weight-bold mt-4 ml-4">みんなの投稿</h5>
+                <div class="mt-4 ml-auto mr-5">
+                    <div class="search royalblue">
+                        <%= form_with url: homes_index_path, local: true, method: :get do |form| %>
+                            <input type="text" name="search" placeholder="キーワードを入力">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
             <%= render 'public/layouts/post-index', posts: @posts %> 
          </div>
         <div class="col-sm-3"></div>

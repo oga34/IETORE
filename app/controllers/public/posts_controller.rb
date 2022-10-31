@@ -2,6 +2,16 @@ class Public::PostsController < ApplicationController
     before_action :authenticate_user!, only: [:edit, :update, :destroy]
     layout 'public/layouts/application'
     
+    def search
+      if params[:keyword].present?
+        @posts = Post.where('body LIKE ?', "%#{params[:keyword]}%")
+        @keyword = params[:keyword]
+      else
+        @posts = Post.all
+      end
+    end
+
+    
     def new
         @post = Post.new
         @genres = Genre.all

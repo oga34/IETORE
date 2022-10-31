@@ -7,9 +7,19 @@ class Public::HomesController < ApplicationController
     
     ##全てのユーザーの投稿一覧
     def index
-        @posts = Post.published.reverse_order
+        @genres = Genre.all
+        @search = params[:search] 
+        if @search == nil
+            @posts= Post.published.reverse_order
+        elsif @search == ''
+            @posts = Post.published.reverse_order
+        else
+             #部分検索
+             @posts = Post.joins(:genre).where("body LIKE(?) OR name LIKE(?)", "%#{@search}%",  "%#{@search}%").published.reverse_order
+        end
     end
     
+                
     ##ゲストログイン
     def new_guest
     user = User.find_or_create_by(email: 'guest@example.com') do |user|
