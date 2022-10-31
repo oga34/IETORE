@@ -2,17 +2,20 @@
   <div class="row no-gutters">
     <div class="col-md-5 col-sm-10 mx-2 mx-sm-auto shadow-lg rounded px-0 my-5">
       <h5 class="text-dark bg-light p-4 mb-0">トレーニング記録</h5>
-      <div class="form-body p-4">
-        <% if @post.errors.any? %>
-          <ul class="alert alert-danger" role="alert">
+      <div class="form-body bg-white p-4">
+        <div class="error-message">
+    <% if @post.errors.any? %>
+        <%= @post.errors.count %>件のエラーメッセージが発生しました
+          <ul class="alert alert-danger">
             <h6 class="alert-heading">
-              <%= @post.errors.count %>件のエラーが発生しました
-            </h6>
             <% @post.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+            </h6>
+          <li><%= message %></li>
             <% end %>
           </ul>
-        <% end %>
+    <% end %>
+</div>
+        
         <%= form_with model: @post, url: posts_path, method: :post do |f| %>
           <%= f.file_field :video %> <br>
           <div class="input-group mb-3 mt-4">

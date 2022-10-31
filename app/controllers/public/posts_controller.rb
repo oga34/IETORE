@@ -11,7 +11,7 @@ class Public::PostsController < ApplicationController
       @post = Post.new(post_params)
       @genres = Genre.all
       if @post.save
-        redirect_to my_page_path, notice: "記録を作成しました！"
+        redirect_to my_page_path(current_user), notice: "記録を作成しました！"
       else
         render :new, alert: "記録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
       end

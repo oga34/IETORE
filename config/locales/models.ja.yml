@@ -11,3 +11,5 @@ ja:
         first_name_kana: フリガナ(セイ)
         last_name_kana: フリガナ(メイ)
         nickname: ニックネーム
+      genre:
+        name: ジャンル

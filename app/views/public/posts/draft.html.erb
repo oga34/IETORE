@@ -1,26 +1,11 @@
-下書き画面
-<div class="card-list-container">
-                <% @posts.each do |post| %>
-                    <%= link_to post_path(post.id) do %>
-                    <div class="card w-50 mx-auto mt-4 shadow-lg">
-                        <div class="card-body">
-                            <p>ユーザーネーム：<%= post.user.nickname %></p>
-                            <p>投稿ユーザー画像：<%= image_tag post.user.get_profile_image(100,100) %></p>
-                            <p>投稿日：<%= post.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-                            <p class="card-text">トレーニングジャンル：<%= post.genre.name %></p>
-                            <% if post.count.present? %>
-                                <p class="card-text">回数：<%= post.count %>回</p>
-                            <% end %>
-                            <% if post.time.present? %>
-                                <p class="card-text">時間：<%= post.time %>分</p>
-                            <% end %>
-                            <p class="card-text"><%= raw Rinku.auto_link(simple_format(post.body), :urls, 'target="_blank" rel="noopener noreferrer"') %></p>
-                            <% if post.user == current_user %>
-                                <%= link_to "編集する", edit_post_path(post) %>
-                                <%= link_to "削除する", post_path(post), method: :delete %>
-                            <% end %>
-                        </div>
-                    </div>
-                    <% end %>
-                <% end %>
-            </div>
+<!-- 下書き一覧表示 -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <h5 class="font-weight-bold mt-4 ml-4">下書き一覧</h5>
+            <%= render 'public/layouts/post-index', posts: @posts %> 
+         </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
