@@ -34,13 +34,13 @@ footer {
 /* 検索機能 */
 .search {
   display: flex;
-  width: 70%;
+  width: 50%;
   margin: 10px;
 }
 
 .search input[type=text] {
   width: 100%;
-  font-size: 20px;
+  font-size: 16px;
   padding: 0 6px;
   color: #474747;
   border: 2px solid #474747;
@@ -49,7 +49,7 @@ footer {
 }
 
 .search button[type=submit] {
-  padding: 10px 20px;
+  padding: 5px;
   font-size: 16px;
   color: #FFF;
   background: #474747;
