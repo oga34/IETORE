@@ -52,16 +52,16 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      redirect_to my_page_path(current_user), notice: "記録を更新しました！"
+      redirect_to my_page_path(current_user), notice: "投稿内容を更新しました！"
     else
-      render :edit, alert: "記録できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
+      render :edit, alert: "投稿内容を更新できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
     end
   end
   
   def destroy
     post = Post.find(params[:id])
     post.destroy 
-    redirect_back(fallback_location: root_path)
+    redirect_to my_page_path(current_user), notice: "投稿を削除しました"
   end
   
  private

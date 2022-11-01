@@ -10,7 +10,11 @@ class Post < ApplicationRecord
     
     enum status: { published: 0, draft: 1}
     
-    def favorited_by?(user)
-        favorites.exists?(user_id: user.id)
-    end
+        def favorited_by?(user)
+            favorites.exists?(user_id: user.id)
+        end
+        
+        def favorited_by?(admin)
+            favorites.exists?
+        end
 end

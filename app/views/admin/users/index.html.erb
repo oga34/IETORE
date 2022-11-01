@@ -1,8 +1,7 @@
-<div class="page_title mb-3 pl-3 pr-3">
-    会員一覧
-</div>
-
 <div class="container m-10">
+    <div class="font-weight-bold mt-4 h5">
+    会員一覧
+    </div>
 <table class="table table-customers" border="2" rules="rows" frame="hsides" bordercolor="silver">
     <thead bgcolor="#DDDDDD">
         <tr>
@@ -13,7 +12,7 @@
         </tr>
     </thead>
     
-    <tbody>
+    <tbody class="bg-light">
      <% @users.each do |user| %>
      <tr>
         <td>

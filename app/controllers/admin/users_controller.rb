@@ -8,7 +8,15 @@ class Admin::UsersController < ApplicationController
 
     def show
         @user = User.find(params[:id])
-        @posts = @user.posts.page(params[:page]).order(created_at: :desc)
+        @search = params[:search] 
+        if @search == nil
+            @posts= @user.posts.published.reverse_order
+        elsif @search == ''
+            @posts = @user.posts.published.reverse_order
+        else
+             #部分検索
+            @posts = @user.posts.published.reverse_order.joins(:genre).where("body LIKE(?) OR name LIKE(?)", "%#{@search}%",  "%#{@search}%").published.reverse_order
+        end
     end
 
     def edit

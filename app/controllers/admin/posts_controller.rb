@@ -17,27 +17,31 @@ class Admin::PostsController < ApplicationController
       end
     end
     
+    
+    def destroy
+      post = Post.find(params[:id])
+      post.destroy 
+      redirect_to admin_root_path, notice: "投稿を削除しました"
+    end
+    
     def show
       @post = Post.find(params[:id])
       @post_comment = PostComment.new
+      ##投稿に紐づく全てのいいねの情報
+      @favorites = @post.favorites
     end
-  
-    def index
-    @posts = Post.all.order(created_at: :desc)
+    
+     ##いいねしたユーザー一覧表示
+    def favorited_user
+      post = Post.find(params[:id])
+      @favorites = post.favorites
     end
-
-  def edit
-    @post = Post.find(params[:id])
-  end
-  
-  def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to posts_path
-    else
-      render :edit
+    
+    
+    def draft
+      @posts = current_user.posts.draft.reverse_order
     end
-  end
+    
   
  private
   def post_params

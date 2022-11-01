@@ -51,7 +51,9 @@
               <%= link_to post_favorites_path(@post), method: :post do %>
                 ♡<%= @post.favorites.count %>
               <% end %>
-              件のいいね
+              <%= link_to favorited_user_path(@post.id) do %>
+                件のいいね
+              <% end %>
             </div>
             <% end %>
           </div>

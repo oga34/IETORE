@@ -3,32 +3,28 @@ Rails.application.routes.draw do
  
  namespace :admin do
   resources :users, only: [:index,:show,:edit,:update]
- end
- 
- namespace :admin do
-  resources :posts, only: [:index,:show,:edit,:update,:destroy]
- end
-  
- namespace :admin do
+  get 'users/information/edit' => 'users#edit', as: 'information_edit'
+  patch  'users/information' => 'users#update', as: 'information_update'
+  get 'users/favorites' => 'users#favorites'
+  get 'posts/favorited_user/:id' => 'posts#favorited_user', as: 'favorited_user'
+  get 'posts/draft' => 'posts#draft', as: 'draft'
+  resources :posts, only: [:show,:destroy]
+
   resources :genres, only: [:index,:create,:edit,:update]
- end
-  
- namespace :admin do
+
   root to: 'homes#top'
  end
-  
- get 'users/my_page/:id' => 'public/users#show', as: 'my_page'
- get 'users/information/edit' => 'public/users#edit', as: 'information_edit'
- patch  'users/information' => 'public/users#update', as: 'information_update'
- get 'users/unsubcribe' => 'public/users#unsubcribe'
- patch 'users/withdraw' => 'public/users#withdraw'
- get 'users/favorites' => 'public/users#favorites'
-    
- get 'posts/favorited_user/:id' => 'public/posts#favorited_user', as: 'favorited_user'
  
  scope module: :public do
-   get 'posts/draft' => 'posts#draft', as: 'draft'
    get 'homes/index' => 'homes#index'
+   get 'users/my_page/:id' => 'users#show', as: 'my_page'
+   get 'users/information/edit' => 'users#edit', as: 'information_edit'
+   patch  'users/information' => 'users#update', as: 'information_update'
+   get 'users/unsubcribe' => 'users#unsubcribe'
+   patch 'users/withdraw' => 'users#withdraw'
+   get 'users/favorites' => 'users#favorites'
+   get 'posts/favorited_user/:id' => 'posts#favorited_user', as: 'favorited_user'
+   get 'posts/draft' => 'posts#draft', as: 'draft'
    resources :posts do
     resource :favorites, only: [:create, :destroy]
     resources :post_comments, only: [:create, :destroy]
