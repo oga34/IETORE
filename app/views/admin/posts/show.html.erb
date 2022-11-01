@@ -68,7 +68,7 @@
           <%= post_comment.user.nickname %>
         <% end %>
         <%= post_comment.comment %>
-        <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+        <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete %>
       </div>
       <% end %>
 </div>

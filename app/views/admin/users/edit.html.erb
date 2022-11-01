@@ -1,50 +1,47 @@
-<div class="page_title mb-3 pl-3 pr-3">
-  <%= @user.first_name + @user.last_name %>さんの会員情報編集
-</div>
-
-
-
-<div class="container m-3">
-        <div class="row m-3">
-            <div class="font-weight-bold">会員ID　　　　　　    </div>
-            <%= @user.id %>
-        </div>
-</div>
-
-<%= form_with model: @user, url: admin_user_path, method: :patch do |f| %>
-
-  <div class="form-group">
-    <%= f.label :first_name, "氏名　　　　　　　", class: "font-weight-bold ml-5" %>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
-    <%= f.text_field :last_name, autocomplete: "last_name" %>
+<div class="container user-edit-page">
+    <div class="user-edit-form">
+      <div class="h3">会員情報編集</div>
+       <%= form_with model: @user, url: admin_information_update_path, method: :patch, local: true do |f| %>
+          <div class="error-message">
+            <% if @user.errors.any? %>
+              <%= @user.errors.count %>件のエラーメッセージが発生しました
+              <ul>
+              <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+              <% end %>
+              </ul>
+            <% end %>
+          </div>
+          <div class="form-group form-inline input-group-sm">
+            <span class="col-md-3 text-md-right font-weight-bold">プロフィール画像</span>
+            <span class="col-md-3"><%= image_tag @user.get_profile_image(100,100) %></span>
+          </div>
+          <div class="form-group form-inline input-group-sm">
+            <span class="col-md-3 text-md-right font-weight-bold">名前(漢字)</span>
+            <span class="col-md-3"><%= @user.first_name + "　" + @user.last_name %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+            <span class="col-md-3 text-md-right font-weight-bold">名前(フリガナ)</span>
+            <span class="col-md-3"><%= @user.first_name_kana + "　" + @user.last_name_kana %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+		        <span class="col-md-3 text-md-right font-weight-bold">ニックネーム</span>
+            <span class="col-md-3"><%= @user.nickname %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+		        <span class="col-md-3 text-md-right font-weight-bold">メールアドレス</span>
+            <span class="col-md-3"><%= @user.email %></span>
+		      </div>
+		      <div class="form-group form-inline input-group-sm">
+           <span class="col-md-3 text-md-right font-weight-bold">会員ステータス</span>
+           <span class="col-md-3">
+            <%= f.radio_button :is_deleted, :false %>
+            <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;"} %>
+            <%= f.radio_button :is_deleted, :true %>
+            <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
+           </span>
+           <%= f.submit "変更内容を保存", class: "btn btn-success mr-3 ml-3"  %>
+          </div>
+      <% end %>
+    </div>
   </div>
-  
-  <div class="form-group">
-    <%= f.label :first_name_kana, "フリガナ　　　　　", class: "font-weight-bold ml-5" %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
-    <%= f.text_field :last_name_kana, autocomplete: "last_name_kana" %>
-  </div>
- 
-  <div class="form-group">
-    <%= f.label :nickname, "ニックネーム　　　", class: "font-weight-bold ml-5" %>
-    <%= f.text_field :nickname, autocomplete: "nickname" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :email, "メールアドレス　　", class: "font-weight-bold ml-5" %>
-    <%= f.email_field :email, autocomplete: "email" %>
-  </div>
-  
-  <div class="form-group">
-        <%= f.label :is_active, "会員ステータス　　", class: "font-weight-bold ml-5" %>
-        <%= f.radio_button :is_deleted, :false %>
-        <%= f.label :is_deleted, "有効", {value: :false, style: "display: inline-block;", class: "pr-3"} %>
-        <%= f.radio_button :is_deleted, :true %>
-        <%= f.label :is_deleted, "退会", {value: :true, style: "display: inline-block;"} %>
-  </div>
-
-
-  <div style="text-align: left"  class="customer_show_btn">
-    <%= f.submit '　変更を保存　',class: "btn btn-success" %>
-  </div>
-<% end %>

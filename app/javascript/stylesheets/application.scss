@@ -107,7 +107,7 @@ footer {
 
 /* 新規登録画面*/
 .reg-page {
-  width: 1000px;
+  width: 100%;
   padding: 8% 0 0;
   margin: auto;
 }
@@ -150,6 +150,44 @@ footer {
     width: 25px;       /* ※縦横を同値に */
     height: 25px;       /* ※縦横を同値に */
 }
+
+/* 退会画面*/
+
+.unsubcribe-container{
+    margin: 150px;
+}
+.unsubcribe-message {
+    font-size: 18px;
+}
+
+/** 管理者会員情報編集画面 **/
+.user-edit-page {
+    width: 50%;
+    padding: 8% 0 0;
+    margin: auto;
+}
+
+.user-edit-form {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+    background: #E6FFE9;
+    margin: 0 auto;
+    padding: 45px;
+    text-align: center;
+}
+
+/** 管理者会員一覧画面 **/
+.validity{
+     color: #32CD32;
+     font-weight: bolder;
+}
+
+.withdraw {
+    color: #C0C0C0;
+    font-weight: bolder;
+}
+
 
 /* 投稿一覧共通レイアウト */
 .card_style {

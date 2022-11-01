@@ -24,11 +24,11 @@ class Admin::UsersController < ApplicationController
     end
   
     def update
-        user = User.find(params[:id])
-        if user.update(user_params)
-            redirect_to admin_user_path(user.id)
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+            redirect_to admin_user_path(@user), notice: "編集内容を保存しました！"
         else
-        render :edit
+            render :edit, alert: "編集内容を保存できませんでした。お手数ですが、入力内容をご確認のうえ再度お試しください"
         end
     end
 

@@ -3,15 +3,15 @@ Rails.application.routes.draw do
  
  namespace :admin do
   resources :users, only: [:index,:show,:edit,:update]
-  get 'users/information/edit' => 'users#edit', as: 'information_edit'
-  patch  'users/information' => 'users#update', as: 'information_update'
+  get 'users/:id/information/edit' => 'users#edit', as: 'information_edit'
+  patch  'users/:id/information' => 'users#update', as: 'information_update'
   get 'users/favorites' => 'users#favorites'
   get 'posts/favorited_user/:id' => 'posts#favorited_user', as: 'favorited_user'
   get 'posts/draft' => 'posts#draft', as: 'draft'
-  resources :posts, only: [:show,:destroy]
-
+  resources :posts, only: [:show,:destroy] do
+   resources :post_comments, only: [:destroy]
+  end
   resources :genres, only: [:index,:create,:edit,:update]
-
   root to: 'homes#top'
  end
  
