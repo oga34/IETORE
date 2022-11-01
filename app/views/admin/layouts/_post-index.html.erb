@@ -34,37 +34,9 @@
                     <div class="border-top pt-2">
                         <div class="row border-bottom ml-1 mr-1">
                             <div class="ml-4 pb-2">コメント<%= post.post_comments.count %>件</div>
-                            <!-- いいね機能 -->
-                            <div class="ml-auto mr-5">
-                                <% if post.favorited_by?(current_admin) %>
-                                <div>
-                                    <%= link_to post_favorites_path(post), method: :delete do %>
-                                        ♥<%= post.favorites.count %> 
-                                    <% end %>
-                                </div>
-                                <% else %>
-                                <div>
-                                    <%= link_to post_favorites_path(post), method: :post do %>
-                                        ♡<%= post.favorites.count %> 
-                                    <% end %>
-                                </div>
-                                <% end %>
-                            </div>
+                            <!-- いいね -->
+                            <div class="ml-auto mr-5">♥<%= post.favorites.count %> </div>
                         </div>
-
-                        <!--　コメント機能 -->
-                        <% post.post_comments.each do |post_comment| %>
-                            <div class="pt-2">
-                                <%= link_to admin_user_path(post_comment.user.id) do %>
-                                    <%= image_tag post_comment.user.get_profile_image(100,100), class: "user_image_small" %>
-                                    <%= post_comment.user.nickname %>
-                                <% end %>
-                                <%= post_comment.comment %>
-                                <% if post_comment.user == current_user %>
-                                    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-                                <% end %>  
-                            </div>
-                        <% end %>
                     </div>
                 </div>
             </div>

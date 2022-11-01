@@ -18,6 +18,21 @@ class Admin::UsersController < ApplicationController
             @posts = @user.posts.published.reverse_order.joins(:genre).where("body LIKE(?) OR name LIKE(?)", "%#{@search}%",  "%#{@search}%").published.reverse_order
         end
     end
+    
+    ##いいね一覧表示
+    def favorites
+        @user = User.find(params[:id])
+        favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
+        @posts = Post.published.reverse_order.find(favorites)
+    end
+    
+    ##コメントした投稿一覧
+    def commented
+        @user = User.find(params[:id])
+        commented = PostComment.where(user_id: @user.id).pluck(:post_id)
+        @posts = Post.published.reverse_order.find(commented)
+        @post_comment = PostComment.new
+    end
 
     def edit
         @user = User.find(params[:id])

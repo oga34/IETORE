@@ -39,7 +39,8 @@ class Admin::PostsController < ApplicationController
     
     
     def draft
-      @posts = current_user.posts.draft.reverse_order
+      @user = User.find(params[:id])
+      @posts = @user.posts.draft.reverse_order
     end
     
   

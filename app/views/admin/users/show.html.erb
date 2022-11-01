@@ -17,9 +17,10 @@
                     </div>
                 </div>
                 <div class="row mt-3">
-                    <%= link_to "いいね一覧", admin_users_favorites_path, class: "btn btn-info mr-4 ml-3" %>
+                    <%= link_to "いいね一覧", admin_favorites_path, class: "btn btn-info mr-4 ml-3" %>
                     <%= link_to "下書き一覧", admin_draft_path, class: "btn btn-dark" %>
                 </div>
+                <div><%= link_to "コメントした投稿一覧", admin_commented_path, class: "btn btn-secondary mr-4 ml-3 mt-2" %></div>
         </div>
         <div class="col-md-1"></div>
         <div class="col-md-6">

@@ -51,20 +51,6 @@
                                 <% end %>
                             </div>
                         </div>
-
-                        <!--　コメント機能 -->
-                        <% post.post_comments.each do |post_comment| %>
-                            <div>
-                                <%= link_to my_page_path(post_comment.user.id) do %>
-                                    <%= image_tag post_comment.user.get_profile_image(100,100), class: "user_image_small" %>
-                                    <%= post_comment.user.nickname %>
-                                <% end %>
-                                <%= post_comment.comment %>
-                                <% if post_comment.user == current_user %>
-                                    <%= link_to "削除", post_post_comment_path(post_comment.post, post_comment), method: :delete %>
-                                <% end %>  
-                            </div>
-                        <% end %>
                     </div>
                 </div>
             </div>

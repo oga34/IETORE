@@ -35,31 +35,11 @@
       <div class="border-top pt-2">
         <div class="row">
           <div class="ml-4">コメント<%= @post.post_comments.count %>件</div>
-          <!-- いいね機能 -->
-          <div class="ml-auto mr-5">
-            <% if @post.favorited_by?(current_user) %>
-            <div>
-              <%= link_to post_favorites_path(@post), method: :delete do %>
-                ♥<%= @post.favorites.count %>
-              <% end %>
-              <%= link_to favorited_user_path(@post.id) do %>
-                件のいいね
-              <% end %>
-            </div>
-            <% else %>
-            <div>
-              <%= link_to post_favorites_path(@post), method: :post do %>
-                ♡<%= @post.favorites.count %>
-              <% end %>
-              <%= link_to favorited_user_path(@post.id) do %>
-                件のいいね
-              <% end %>
-            </div>
-            <% end %>
-          </div>
+          <!-- いいね -->
+          <div class="ml-auto mr-5">♥<%= @post.favorites.count %>件のいいね</div>
         </div>
 
-      <!--　コメント機能 -->
+      <!--　コメント -->
       <div class="border-top m-1 pt-2"></div>
       <% @post.post_comments.each do |post_comment| %>
       <div class="m-2">

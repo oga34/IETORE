@@ -48,6 +48,15 @@ class Public::UsersController < ApplicationController
     @post_comment = PostComment.new
   end
   
+   
+    ##コメントした投稿一覧
+    def commented
+        @user = current_user
+        commented = PostComment.where(user_id: @user.id).pluck(:post_id)
+        @posts = Post.published.reverse_order.find(commented)
+        @post_comment = PostComment.new
+    end
+  
     private
     def user_params
       params.require(:user).permit( :first_name, :last_name, :first_name_kana, :last_name_kana, :email, :nickname, :profile_image)

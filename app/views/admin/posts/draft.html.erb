@@ -1,0 +1,13 @@
+<!-- 下書き一覧表示 -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6">
+            <div class="row">
+                <h5 class="font-weight-bold mt-4 ml-5"><%= @user.nickname %>の下書き一覧</h5>
+            </div>
+            <%= render 'admin/layouts/post-index', posts: @posts %> 
+         </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>

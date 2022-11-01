@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :users, only: [:index,:show,:edit,:update]
   get 'users/:id/information/edit' => 'users#edit', as: 'information_edit'
   patch  'users/:id/information' => 'users#update', as: 'information_update'
-  get 'users/favorites' => 'users#favorites'
+  get 'users/:id/favorites' => 'users#favorites', as: 'favorites'
+  get 'users/:id/commented' => 'users#commented', as: 'commented'
   get 'posts/favorited_user/:id' => 'posts#favorited_user', as: 'favorited_user'
-  get 'posts/draft' => 'posts#draft', as: 'draft'
+  get 'posts/draft/:id' => 'posts#draft', as: 'draft'
   resources :posts, only: [:show,:destroy] do
    resources :post_comments, only: [:destroy]
   end
@@ -23,6 +24,7 @@ Rails.application.routes.draw do
    get 'users/unsubcribe' => 'users#unsubcribe'
    patch 'users/withdraw' => 'users#withdraw'
    get 'users/favorites' => 'users#favorites'
+   get 'users/commented' => 'users#commented'
    get 'posts/favorited_user/:id' => 'posts#favorited_user', as: 'favorited_user'
    get 'posts/draft' => 'posts#draft', as: 'draft'
    resources :posts do
