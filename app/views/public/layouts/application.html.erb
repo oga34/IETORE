@@ -25,23 +25,29 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
+              <i class="fas fa-walking"></i>
               <%= link_to 'みんなの投稿', homes_index_path, class: 'nav-link text-dark' %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
+              <i class="fas fa-pencil-alt"></i>
               <%= link_to '記録する', new_post_path, class: 'nav-link text-dark' %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
+              <i class="fas fa-user-circle"></i>
               <%= link_to 'マイページ', my_page_path(current_user), class: 'nav-link text-dark' %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
+              <i class="fas fa-sign-out-alt"></i>
               <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
             <% else %>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
+              <i class="fas fa-user-plus"></i>
               <%= link_to "新規登録", new_user_registration_path, class: 'nav-link text-dark' %>
             </li>
-            <li class="nav-item">
+            <li class="nav-item d-flex align-items-center">
+              <i class="fas fa-sign-in-alt"></i>
               <%= link_to "ログイン", new_user_session_path, class: 'nav-link text-dark' %>
             </li>
             <% end %>
