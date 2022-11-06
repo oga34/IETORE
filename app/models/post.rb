@@ -5,7 +5,6 @@ class Post < ApplicationRecord
     has_many :favorites, dependent: :destroy
     has_one_attached :video
     
-    validates :genre_id, presence: true
     validates :body, length: { maximum: 400}
     
     enum status: { published: 0, draft: 1}

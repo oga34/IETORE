@@ -4,20 +4,11 @@
       <h5 class="text-dark bg-light p-4 mb-0">トレーニング記録</h5>
       <div class="form-body bg-white p-4">
         <div class="error-message">
-    <% if @post.errors.any? %>
-        <%= @post.errors.count %>件のエラーメッセージが発生しました
-          <ul class="alert alert-danger">
-            <h6 class="alert-heading">
-            <% @post.errors.full_messages.each do |message| %>
-            </h6>
-          <li><%= message %></li>
-            <% end %>
-          </ul>
-    <% end %>
 </div>
         
         <%= form_with model: @post, url: posts_path, method: :post do |f| %>
-          <%= f.file_field :video %> <br>
+           <%= render "public/shared/error_messages", model: f.object %>
+
           <div class="input-group mb-3 mt-4">
             <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, include_blank: '--トレーニングジャンルを選択--' %>
           </div>
