@@ -13,9 +13,7 @@
                     <%= link_to admin_post_path(post.id) do %>
                         <div class="m-1">
                             <p>
-                                <% unless post.genre.name == "その他" %>
-                                    <%= post.genre.name %>
-                                <% end %>
+                                <%= post.genre.name %>
                                 <% if post.count.present? %>
                                     <%= post.count %>回
                                 <% end %>

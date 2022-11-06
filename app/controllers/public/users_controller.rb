@@ -42,7 +42,7 @@ class Public::UsersController < ApplicationController
   
   ##いいね一覧表示
   def favorites
-    @user =current_user
+    @user = current_user
     favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
     @posts = Post.published.reverse_order.find(favorites)
     @post_comment = PostComment.new

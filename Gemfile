@@ -71,3 +71,5 @@ gem "rinku"
 gem 'image_processing'
 
 gem 'rails-i18n'
+
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'

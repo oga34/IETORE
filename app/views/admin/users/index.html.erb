@@ -1,7 +1,7 @@
 <div class="container m-10">
     <div class="font-weight-bold mt-4 h5">
     会員一覧
-    </div>
+</div>
 <table class="table table-customers" border="2" rules="rows" frame="hsides" bordercolor="silver">
     <thead bgcolor="#DDDDDD">
         <tr>
@@ -38,5 +38,6 @@
      <% end %>
     </tbody>
 </table>
-
-    <%= paginate @users %>
+<div class="d-flex justify-content-center">
+    <%= paginate @users, theme: 'bootstrap-5' %>
+</div>

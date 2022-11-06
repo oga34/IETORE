@@ -22,8 +22,10 @@ class Public::PostsController < ApplicationController
       @user = current_user
       @posts= @user.posts.published.reverse_order
       @genres = Genre.all
-      if @post.save
+      if @post.save && @post.status == "published"
         redirect_to my_page_path(current_user), notice: "記録を作成しました！"
+      elsif @post.save && @post.status == "draft"
+        redirect_to my_page_path(current_user), notice: "下書きを保存しました"
       else
         render :new
       end

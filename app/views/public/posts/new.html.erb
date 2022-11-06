@@ -13,7 +13,7 @@
             <%= f.select :genre_id, @genres.map{ |genre| [genre.name, genre.id] }, include_blank: '--トレーニングジャンルを選択--' %>
           </div>
           <div class="input-group mb-3 mt-4">
-            <%= f.label :conut, "回数" %>
+            <%= f.label :conut, "回数", class: "mr-2" %>
             <%= f.number_field :count %>回
           </div>
           <div class="input-group mb-3 mt-4">

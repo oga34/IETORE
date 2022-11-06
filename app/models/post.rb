@@ -13,7 +13,4 @@ class Post < ApplicationRecord
             favorites.exists?(user_id: user.id)
         end
         
-        def favorited_by?(admin)
-            favorites.exists?
-        end
 end

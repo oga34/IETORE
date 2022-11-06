@@ -16,3 +16,5 @@ ja:
         nickname: ニックネーム
       post:
         genre: ジャンル
+      genre:
+        name: ジャンル名
