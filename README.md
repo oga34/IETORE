@@ -1,24 +1,31 @@
-# README
+# <IETORE>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+### サイトテーマ
+<お家トレーニング　× コミュニティサイト>
+### テーマを選んだ理由
+コロナ禍のため外で体を動かす機会が少なく、家で体を動かそうと思っている人も多いのではないでしょうか。
+私自身もそう考えているうちの一人でしたが、いざトレーニングをしても3日坊主になって継続できなかったり、どんなトレーニングをして良いかわからないといったことがありました。
+そこで、自分のトレーニング内容を記録したり、他の人がどんなトレーニングをしているのかを閲覧できるサイトがあれば良いと思い製作に着手しました。
 
-Things you may want to cover:
+### ターゲットユーザ
+- 家でトレーニングをしている人
+- これから家でトレーニングをしようと思っている人
 
-* Ruby version
+### 主な利用シーン
+- トレーニングの記録をつけたい時
+- 他の人がどんなトレーニングをしているのかを見たい時
+- トレーニングを検索したい時
 
-* System dependencies
+## 設計書
+<検討中>
 
-* Configuration
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- 使用検討中
