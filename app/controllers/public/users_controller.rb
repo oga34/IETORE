@@ -13,6 +13,10 @@ class Public::UsersController < ApplicationController
              #部分検索
             @posts = @user.posts.published.reverse_order.joins(:genre).where("body LIKE(?) OR name LIKE(?)", "%#{@search}%",  "%#{@search}%").published.reverse_order
         end
+        
+       @published_posts = @user.posts.published
+       @time = @published_posts.all.sum(:time)
+       @count = @published_posts.all.sum(:count)
     end
     
     def edit
