@@ -18,7 +18,9 @@
 - トレーニングを検索したい時
 
 ## 設計書
-<検討中>
+- ER図 https://drive.google.com/file/d/1kpSr8qL0v2zLo_ceZDmT8ZoxWss_CxSQ/view?usp=sharing
+- アプリケーション詳細設計　https://docs.google.com/spreadsheets/d/1t96dHNqjU1QF1r5_Ac8puJ8XvEeA79JZ5rEWk6EEHnQ/edit?usp=sharing
+- テーブル定義書 https://docs.google.com/spreadsheets/d/1j1gNqXkU8gROOvYsO7GQ1-g182Z_5JlTjk3_cRY6SFI/edit?usp=sharing
 
 ## 開発環境
 - OS：Linux(CentOS)
@@ -28,4 +30,5 @@
 - IDE：Cloud9
 
 ## 使用素材
-- 使用検討中
+- かわいいフリー素材集 いらすとや https://www.irasutoya.com
+- 写真素材なら「写真AC」無料（フリー）ダウンロードOKhttps://www.photo-ac.com
