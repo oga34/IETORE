@@ -1,4 +1,5 @@
 class Public::PostCommentsController < ApplicationController
+    before_action :authenticate_user!, only: [:create, :destroy]
     layout 'public/layouts/application'
     
   def create
@@ -9,13 +10,15 @@ class Public::PostCommentsController < ApplicationController
     redirect_to post_path(post)
   end
   
-  def edit
-    @post_comment = Postcomment.find(params[:id])
-  end
-  
   def destroy
-    PostComment.find(params[:id]).destroy
-    redirect_to post_path(params[:post_id])
+    post_comment = PostComment.find(params[:id])
+    user = post_comment.user
+    if user == current_user
+      post_comment.destroy
+      redirect_to post_path(params[:post_id])
+    else
+      redirect_to root_path
+    end
   end
 
     
