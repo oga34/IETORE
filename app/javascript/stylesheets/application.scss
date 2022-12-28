@@ -198,9 +198,20 @@ footer {
      font-weight: bolder;
 }
 
+.user-link {
+    color: blue;
+    text-decoration: underline;
+}
+
 .withdraw {
     color: #C0C0C0;
     font-weight: bolder;
+}
+
+/** 管理者投稿詳細画面 **/
+.comment-delete {
+    color: blue;
+    text-decoration: underline;
 }
 
 

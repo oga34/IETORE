@@ -36,9 +36,12 @@
           <!-- いいね -->
           <div class="ml-auto mr-5">
             <i class="fas fa-heart like-btn"></i>
-            <span class="like-count-color">
-              <%= @post.favorites.count %>
-            </span>
+            <%= link_to admin_favorited_user_path(@post.id) do %>
+              <span class="like-count-color">
+                <%= @post.favorites.count %>
+              </span>
+              件のいいね
+            <% end %>
           </div>
         </div>
 
@@ -51,7 +54,7 @@
           <%= post_comment.user.nickname %>
         <% end %>
         <%= post_comment.comment %>
-        <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete %>
+        <%= link_to "削除", admin_post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "comment-delete" %>
       </div>
       <% end %>
 </div>
