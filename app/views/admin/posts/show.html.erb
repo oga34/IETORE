@@ -22,7 +22,7 @@
             <%= @post.time %>分
           <% end %>
         </p>
-        <div class="ml-auto mt-2">
+        <div class="ml-auto">
             <%= link_to "削除", admin_post_path(@post.id), method: :delete, class: "btn btn-danger" %>
         </div>
 
@@ -34,7 +34,12 @@
         <div class="row">
           <div class="ml-4">コメント<%= @post.post_comments.count %>件</div>
           <!-- いいね -->
-          <div class="ml-auto mr-5">♥<%= @post.favorites.count %>件のいいね</div>
+          <div class="ml-auto mr-5">
+            <i class="fas fa-heart like-btn"></i>
+            <span class="like-count-color">
+              <%= @post.favorites.count %>
+            </span>
+          </div>
         </div>
 
       <!--　コメント -->
