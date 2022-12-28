@@ -31,19 +31,23 @@
       
                     <div class="border-top pt-2">
                         <div class="row">
-                            <div class="ml-4">コメント<%= post.post_comments.count %>件</div>
+                            <%= link_to post_path(post.id) do %>
+                                <div class="ml-4">コメント<%= post.post_comments.count %>件</div>
+                            <% end %>
                             <!-- いいね機能 -->
                             <div class="ml-auto mr-5">
                                 <% if post.favorited_by?(current_user) %>
                                 <div>
                                     <%= link_to post_favorites_path(post), method: :delete do %>
-                                        <i class="fas fa-heart unlike-btn"></i><span class="unlike-count-color ml-1"><%= post.favorites.count %></span>
+                                        <i class="fas fa-heart like-btn" ></i>
+                                        <span class="like-count-color"><%= post.favorites.count %></span>
                                     <% end %>
                                 </div>
                                 <% else %>
                                 <div>
                                     <%= link_to post_favorites_path(post), method: :post do %>
-                                        <i class="far fa-heart like-btn" ></i><span class="like-count-color ml-1"><%= post.favorites.count %></span>
+                                        <i class="far fa-heart unlike-btn"></i>
+                                        <span class="unlike-count-color"><%= post.favorites.count %></span>
                                     <% end %>
                                 </div>
                                 <% end %>
