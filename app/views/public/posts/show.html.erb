@@ -38,7 +38,7 @@
             <% if @post.favorited_by?(current_user) %>
             <div>
               <%= link_to post_favorites_path(@post), method: :delete do %>
-                ♥<%= @post.favorites.count %>
+                <i class="fas fa-heart unlike-btn"></i><span class="unlike-count-color ml-1"><%= @post.favorites.count %> </span>
               <% end %>
               <%= link_to favorited_user_path(@post.id) do %>
                 件のいいね
@@ -47,7 +47,7 @@
             <% else %>
             <div>
               <%= link_to post_favorites_path(@post), method: :post do %>
-                ♡<%= @post.favorites.count %>
+                <i class="far fa-heart like-btn" ></i><span class="like-count-color ml-1"><%= @post.favorites.count %> </span>
               <% end %>
               <%= link_to favorited_user_path(@post.id) do %>
                 件のいいね

@@ -41,6 +41,11 @@ footer {
     line-height: 70px;
 }
 
+.gest-login, .reg-path {
+    color: blue;
+    text-decoration: underline;
+}
+
 /* 検索機能 */
 .search {
   display: flex;
@@ -211,3 +216,27 @@ footer {
 .card-body {
     width: 100%;
 }
+
+.like-btn {
+ width: 20px;
+ height: 20px;
+ font-size: 20px;
+ color: #808080; 
+ margin-top: 5px;
+ }
+ 
+ .unlike-btn {
+ width: 20px;
+ height: 20px;
+ font-size: 20px;
+ color: #e54747;
+ margin-top: 5px;
+ }
+ 
+ .like-count-color {
+     color: #808080;
+ }
+ 
+ .unlike-count-color {
+     color: #e54747;
+ }
