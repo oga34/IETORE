@@ -24,7 +24,7 @@
                         </div>
                         <% if post.body.present? %>
                         <div class="row post-body">
-                            <div><%= raw Rinku.auto_link(simple_format(post.body), :urls, 'target="_blank" rel="noopener noreferrer"') %></div>
+                            <div class="rink"><%= raw Rinku.auto_link(simple_format(post.body), :urls, 'target="_blank" rel="noopener noreferrer"') %></div>
                         </div>
                         <% end %>
                     <% end %>
