@@ -9,7 +9,7 @@ class Admin::HomesController < ApplicationController
         elsif @search == ''
             @posts = Post.published.reverse_order.page(params[:page]).per(10)
         else
-             #部分検索
+             #部分検索 
              @posts = Post.joins(:genre).where("body LIKE(?) OR name LIKE(?)", "%#{@search}%",  "%#{@search}%").published.reverse_order.page(params[:page]).per(10)
         end
     end
