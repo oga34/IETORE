@@ -24,7 +24,7 @@ class Public::PostsController < ApplicationController
     ##いいねしたユーザー一覧表示
     def favorited_user
       post = Post.find(params[:id])
-      @favorites = post.favorites
+      @favorites = post.favorites.page(params[:page]).per(10)
     end
     
     def show
@@ -35,7 +35,7 @@ class Public::PostsController < ApplicationController
     end
     
     def draft
-        @posts = current_user.posts.draft.reverse_order
+        @posts = current_user.posts.draft.reverse_order.page(params[:page]).per(10)
     end
 
   def edit

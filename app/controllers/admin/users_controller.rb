@@ -10,12 +10,12 @@ class Admin::UsersController < ApplicationController
         @user = User.find(params[:id])
         @search = params[:search] 
         if @search == nil
-            @posts= @user.posts.published.reverse_order
+            @posts= @user.posts.published.reverse_order.page(params[:page]).per(10)
         elsif @search == ''
-            @posts = @user.posts.published.reverse_order
+            @posts = @user.posts.published.reverse_order.page(params[:page]).per(10)
         else
              #部分検索
-            @posts = @user.posts.published.reverse_order.joins(:genre).where("body LIKE(?) OR name LIKE(?)", "%#{@search}%",  "%#{@search}%").published.reverse_order
+            @posts = @user.posts.published.reverse_order.joins(:genre).where("body LIKE(?) OR name LIKE(?)", "%#{@search}%",  "%#{@search}%").published.reverse_order.page(params[:page]).per(10)
         end
     end
     
@@ -24,6 +24,7 @@ class Admin::UsersController < ApplicationController
         @user = User.find(params[:id])
         favorites = Favorite.where(user_id: @user.id).pluck(:post_id)
         @posts = Post.published.reverse_order.find(favorites)
+        @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
     end
     
     ##コメントした投稿一覧
@@ -31,6 +32,7 @@ class Admin::UsersController < ApplicationController
         @user = User.find(params[:id])
         commented = PostComment.where(user_id: @user.id).pluck(:post_id)
         @posts = Post.published.reverse_order.find(commented)
+        @posts = Kaminari.paginate_array(@posts).page(params[:page]).per(10)
         @post_comment = PostComment.new
     end
 
