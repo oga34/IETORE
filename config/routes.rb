@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:show,:destroy] do
    resources :post_comments, only: [:destroy]
   end
-  resources :genres, only: [:index,:create,:edit,:update,:destroy]
+  resources :genres, only: [:index,:create,:edit,:update]
   root to: 'homes#top'
  end
  
