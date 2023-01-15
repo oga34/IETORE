@@ -7,6 +7,14 @@
     box-sizing: border-box;
 }
 
+img {
+  -ms-interpolation-mode: nearest-neighbor;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;   
+  image-rendering: pixelated;  
+}
+
 a{
   color:inherit;
   text-decoration: none;
@@ -212,6 +220,15 @@ footer {
 .comment-delete {
     color: blue;
     text-decoration: underline;
+}
+
+/** 管理者ジャンル一覧 **/
+
+.genre-list li {
+	line-height:3em;
+	border:1px solid #cccccc;
+	cursor:pointer;
+	margin-bottom: 1px;
 }
 
 
