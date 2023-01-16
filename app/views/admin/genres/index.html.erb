@@ -12,12 +12,12 @@
     </div>
     <ul class="genre-list w-50">
         <% @genres.each do |genre| %>
-	        <li id="item<%= genre.id %>" draggable="true" class="mt-2 bg-light">
-	            <div class="row">
-	                <div class="ml-5 d-flex align-items-center"><%= genre.name %></div>
-	                <div class="ml-auto mr-5 d-flex align-items-center"><%= link_to "　編集する　", edit_admin_genre_path(genre.id), class: "btn btn-success" %></div>
-	            </div>
-	        </li>
-	   　<% end %>
+            <li id="item<%= genre.id %>" draggable="true" class="mt-2 bg-light">
+                    <div class="row pt-2 pb-2">
+                    <div class="ml-5 d-flex align-items-center"><%= genre.name %></div>
+                    <div class="ml-auto mr-5 d-flex align-items-center"><%= link_to "　編集する　", edit_admin_genre_path(genre.id), class: "btn btn-success" %></div>
+                </div>
+            </li>
+           <% end %>
     </ul>
 </div>

@@ -1,7 +1,7 @@
 class Public::PostCommentsController < ApplicationController
-    before_action :authenticate_user!, only: [:create, :destroy]
-    layout 'public/layouts/application'
-    
+  before_action :authenticate_user!, only: [:create, :destroy]
+  layout "public/layouts/application"
+
   def create
     post = Post.find(params[:post_id])
     comment = current_user.post_comments.new(post_comment_params)
@@ -9,7 +9,7 @@ class Public::PostCommentsController < ApplicationController
     comment.save
     redirect_to post_path(post)
   end
-  
+
   def destroy
     post_comment = PostComment.find(params[:id])
     user = post_comment.user
@@ -21,9 +21,9 @@ class Public::PostCommentsController < ApplicationController
     end
   end
 
-    
+
 private
-    def post_comment_params
+  def post_comment_params
     params.require(:post_comment).permit(:comment, :post_id)
-    end
+  end
 end

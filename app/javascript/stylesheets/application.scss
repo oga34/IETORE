@@ -24,6 +24,10 @@ a{
   display: contents;
 }
 
+ul {
+    mrgin-bottom: 0px;
+}
+
 li {
     list-style: none;
 }
@@ -222,15 +226,11 @@ footer {
     text-decoration: underline;
 }
 
-/** 管理者ジャンル一覧 **/
-
 .genre-list li {
-	line-height:3em;
 	border:1px solid #cccccc;
 	cursor:pointer;
 	margin-bottom: 1px;
 }
-
 
 /* 投稿一覧共通レイアウト */
 .card_style {
