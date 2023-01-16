@@ -5,7 +5,7 @@
       <div class="form-body bg-white p-4">
         <div class="error-message">
 </div>
-        
+
         <%= form_with model: @post, url: posts_path, method: :post do |f| %>
            <%= render "public/shared/error_messages", model: f.object %>
 
@@ -14,11 +14,11 @@
           </div>
           <div class="input-group mb-3 mt-4">
             <%= f.label :conut, "回数", class: "mr-2" %>
-            <%= f.number_field :count %>回
+            <%= f.number_field :count, in: 1..1000, class: "mr-2" %>回
           </div>
           <div class="input-group mb-3 mt-4">
             <%= f.label :time, "時間（分）" %>
-            <%= f.number_field :time %>分
+            <%= f.number_field :time, in: 1..1000, class: "mr-2" %>分
           </div>
           <%= f.text_area :body, class:"form-control", rows:"3", placeholder:"コメントここに" %>
           <hr>

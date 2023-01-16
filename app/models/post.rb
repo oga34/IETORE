@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_one_attached :video
 
   validates :body, length: { maximum: 400 }
-
+  
   enum status: { published: 0, draft: 1 }
 
   def favorited_by?(user)

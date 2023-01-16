@@ -16,5 +16,7 @@ ja:
         nickname: ニックネーム
       post:
         genre: ジャンル
+        count: 回数
+        time: 時間（分）
       genre:
         name: ジャンル名
